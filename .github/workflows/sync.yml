@@ -2,12 +2,13 @@
 name: Sync the template repository
 
 on: # yamllint disable-line rule:truthy
+  pull_request:
   push:
-    branches:
-    - main
+    branches: main
 
 jobs:
   metadata:
+
     runs-on: ubuntu-latest
 
     outputs:
@@ -26,7 +27,7 @@ jobs:
     - metadata
 
     # only runs on main branch and only for the template
-    if: ${{ github.ref == 'refs/heads/main' && fromJSON(needs.metadata.outputs.repository).is_template }}
+    if: ${{ fromJSON(needs.metadata.outputs.repository).is_template }}
 
     runs-on: ubuntu-latest
 
