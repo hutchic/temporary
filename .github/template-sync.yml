@@ -1,0 +1,8 @@
+---
+additional:
+- template-docker
+files:
+- '!**/sync.yml'
+- '!.secrets.baseline'
+- '!**/template-sync.yml'
+- '!.github/workflows/sync.yml'
